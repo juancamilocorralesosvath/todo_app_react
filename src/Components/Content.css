@@ -1,0 +1,19 @@
+.myDiv{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+.Content-ul{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blueviolet;
+    height: 100%;
+    width: 100vw;
+}
+.Content-li{
+    height: 30%;
+}
