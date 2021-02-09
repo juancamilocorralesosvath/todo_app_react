@@ -1,6 +1,40 @@
 import { useState } from 'react';
 //useEffect ??
 import Todo from './Todo';
+function CreateTodo(props){
+    const [newTodo, setNewTodo] = useState("");
+    return(
+        <div style={{
+            display:'flex', 
+            width: '500px', 
+            margin: '10px',
+            justifyContent: 'center' 
+            }}>
+        <input style={{
+        width: '300px', 
+        marginRight: '2em'
+        }} 
+        placeholder="agrega un todo!" 
+        type="text"
+        onChange={(e) => {
+            setNewTodo(e.target.value)
+            console.log(newTodo)
+            }}
+        //two way binding 
+        //enlazado en ambas direcciones, tanto en la salida como en la entrada
+        //value={newTodo}
+        />
+        <button style={{
+            background: 'white',
+            padding: '8px',
+            borderRadius: '10px'
+        }} 
+        type='button'
+        onClick={() => props.addTodo(newTodo)}
+         >Agregar</button>
+        </div>
+    )
+}
 function Todos(){
     // eslint-disable-next-line
     const [todos, setTodos] = useState(
@@ -35,11 +69,17 @@ function Todos(){
         myTodos[index].isCompleted = !isCompleted;
         setTodos(myTodos);
     } 
-    
+    const addTodo = (todoText) => {
+        const myTodos = [
+            ...todos, 
+            {text: todoText, isCompleted: false}
+        ];
+        setTodos(myTodos);
+    }
     return(
             <>
                 <h1>Todo App</h1>
-                <h3>Crear Todo</h3>
+                <CreateTodo addTodo={addTodo} />
                 {/* crear un componente con un input que permita insertar todos */}
                 {
                     //ojo, que esto solo lo podemos hacer porque se trata de un arreglo
