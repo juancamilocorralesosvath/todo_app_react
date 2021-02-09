@@ -41,7 +41,7 @@ function Todos(){
         [
             {
                 text: 'Comprar Chiles Poblanos',
-                isCompleted: true,
+                isCompleted: false,
             },
             {
                 text: 'Bañarme',
@@ -53,6 +53,7 @@ function Todos(){
             },
         ]
     );
+    // ejercicio agregar un boton borrar al component todo, para poder eliminar todos del estsado del compoenee padre
     const setCompleted = (index) => {
         //bueno, estoy teniendo un problemota: no se como hacerle para escoger 
         //el todo que es y hacer que se tache
@@ -76,6 +77,24 @@ function Todos(){
         ];
         setTodos(myTodos);
     }
+    const deleteTodo = (index) => {
+        const myTodos = [...todos];
+        /* 
+        first try
+        const isGonnaBeDeleted = myTodos[index];
+        console.log(isGonnaBeDeleted)
+        delete myTodos[isGonnaBeDeleted]; */
+
+       /*  second try
+       for(let i = 0; i < myTodos.length; i++){
+            if(i === index){
+                myTodos[i] = '';
+            }
+        } */
+        // third try, la tercera es la vencida 😁 gloria a Dios!
+        myTodos.splice(index, 1);
+        setTodos(myTodos);
+    }
     return(
             <>
                 <h1>Todo App</h1>
@@ -91,6 +110,7 @@ function Todos(){
                         text={todo.text} 
                         isCompleted={todo.isCompleted}
                         setCompleted={setCompleted}
+                        deleteTodo={deleteTodo}
                         />
                     })
                 }

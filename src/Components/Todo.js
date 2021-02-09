@@ -13,6 +13,13 @@ function Todo(props){
         <span style={showCompleted(props.isCompleted)}>
         {props.text}
         </span>
+        <button 
+        type="button" 
+        onClick={()=>{
+            console.log(props.index)
+            props.deleteTodo(props.index)
+            }}
+        >Eliminar</button>
         </div>
     )
 }
