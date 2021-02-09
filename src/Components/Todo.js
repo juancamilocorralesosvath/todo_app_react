@@ -3,9 +3,9 @@ function Todo(props){
    const showCompleted = (isCompleted) => {
         return isCompleted 
             ? {'textDecorationLine': 'line-through',
-                'margin-left': '20px',        
+                'marginLeft': '20px',        
                 } 
-            : {'margin-left': '20px' };
+            : {'marginLeft': '20px' };
     }
     return(
         <div className="todo">
